@@ -1,3 +1,4 @@
+  
 .form_container{
     width: 60%;
     height: 40vh;
@@ -12,17 +13,16 @@
 
 form{
 height: 50%;
-/* background-color: red; */
 display: flex;
 flex-direction: column;
 align-items: center;
 gap: 2rem;
 padding: 5px;
-/* justify-content: center; */
+
 }
 
 form input{
-    width: 70%;
+    width: 40%;
     outline: none;
     padding: 0.8rem;
     border: 1px solid black;
@@ -44,3 +44,5 @@ form input{
     background-color: #5A96E3;
     color: #282c34;
   }
+
+  

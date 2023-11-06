@@ -1,30 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { actions } from '../../redux/locationReducer';
 import style from './CodeCreate.module.css';
+import { toast } from 'react-toastify';
 
 function CodeCreate() {
   const [postalCode, setPostalCode] = useState('');
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     // 400093
     e.preventDefault();
-    setLoading(true);
+    if (!postalCode) return;
+
+    dispatch(actions.toggleLoading(true));
     axios
       .get(`https://api.zippopotam.us/in/${postalCode}`)
       .then((res) => {
-        // console.log(res.data);
         const data = res.data;
-        // console.log(data);
         dispatch(actions.addLocation(data));
-        setLoading(false);
+        dispatch(actions.toggleLoading(false));
+        toast.success('Found your location');
+        setPostalCode('');
       })
       .catch((err) => {
-        setLoading(false);
+        dispatch(actions.toggleLoading(false));
+        toast.error('wrong poastal code');
         console.log('errrrrrrr', err);
+        setPostalCode('');
       });
   };
 

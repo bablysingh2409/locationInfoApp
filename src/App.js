@@ -3,6 +3,9 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import CodeCreate from './components/postalCodeCreate/CodeCreate';
 import DisplayLocation from './components/displayLocation/DisplayLocation';
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -11,6 +14,7 @@ function App() {
         <CodeCreate />
         <DisplayLocation />
       </Provider>
+      <ToastContainer />
     </div>
   );
 }
